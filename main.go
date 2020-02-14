@@ -2,11 +2,18 @@ package main
 
 import (
 	"fmt"
-	"github.com/bldulam1/go-leetcode/two_sum"
+	"github.com/bldulam1/go-leetcode/add_two_numbers"
 )
 
 func main() {
-	nums := []int{2, 7, 11, 15}
+	l1 := &add_two_numbers.ListNode{
+		Val: 5,
+	}
 
-	fmt.Println(two_sum.TwoSum(nums, 26))
+	l2 := &add_two_numbers.ListNode{
+		Val: 5,
+	}
+
+	sumList := add_two_numbers.AddTwoNumbers(l1, l2)
+	fmt.Println(sumList)
 }

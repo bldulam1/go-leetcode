@@ -2,18 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/bldulam1/go-leetcode/add_two_numbers"
+	"github.com/bldulam1/go-leetcode/multiply_strings"
 )
 
 func main() {
-	l1 := &add_two_numbers.ListNode{
-		Val: 5,
-	}
-
-	l2 := &add_two_numbers.ListNode{
-		Val: 5,
-	}
-
-	sumList := add_two_numbers.AddTwoNumbers(l1, l2)
-	fmt.Println(sumList)
+	num1, num2 := "140", "721"
+	fmt.Println(multiply_strings.Multiply(num1, num2))
 }

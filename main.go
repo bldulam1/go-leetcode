@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/bldulam1/go-leetcode/multiply_strings"
+	"github.com/bldulam1/go-leetcode/lengthOfLongestSubstring"
 )
 
 func main() {
-	num1, num2 := "140", "721"
-	fmt.Println(multiply_strings.Multiply(num1, num2))
+	fmt.Println(lengthOfLongestSubstring.LengthOfLongestSubstring("pwwkew"))
+	fmt.Println(lengthOfLongestSubstring.LengthOfLongestSubstring("abcabcbb"))
+	fmt.Println(lengthOfLongestSubstring.LengthOfLongestSubstring("bbbb"))
 }

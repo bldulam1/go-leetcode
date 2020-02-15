@@ -1,4 +1,4 @@
-package longestPalindrome
+package palindromes
 
 func LongestPalindrome(s string) string {
 	sLen := len(s)

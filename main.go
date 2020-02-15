@@ -2,12 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/bldulam1/go-leetcode/longestPalindrome"
+	"github.com/bldulam1/go-leetcode/palindromes"
 )
 
 func main() {
-	//fmt.Println(medianOfTwoSortedArrays.MedianOfTwoSortedArrays([]int{2}, []int{1, 3}))
-	fmt.Println(longestPalindrome.LongestPalindrome("babad"))
-	fmt.Println(longestPalindrome.LongestPalindrome("a"))
-	fmt.Println(longestPalindrome.LongestPalindrome("cbbd"))
+	fmt.Println(palindromes.ShortestPalindrome("abbacd"))
+	fmt.Println(palindromes.ShortestPalindrome("aacecaaa"))
+	fmt.Println(palindromes.ShortestPalindrome("abcd"))
 }

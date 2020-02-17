@@ -2,28 +2,17 @@ package main
 
 import (
 	"fmt"
-	"github.com/bldulam1/go-leetcode/validNumber"
+	"github.com/bldulam1/go-leetcode/maxPointsOnALine"
 )
 
 func main() {
-	testStrings := []string{
-		"0123456789 e - +",
-		"0.2",
-		"-0.2",
-		"1e4",
-		"1e4e",
-		"53.5e93",
-		"-+3",
-		"  .1",
-		"1e",
-		".e1",
-		"te1",
-		"6+1",
-		" -.",
-		"+",
+	inputs := [][][]int{
+		{{1, 1}, {3, 2}, {5, 3}, {4, 1}, {2, 3}, {1, 4}},
+		{{1, 1}, {1, 1}, {2, 2}, {2, 2}},
 	}
 
-	for _, testString := range testStrings {
-		fmt.Println(testString, validNumber.IsNumber(testString))
+	for _, input := range inputs {
+		fmt.Println(maxPointsOnALine.MaxPointsOnALine(input))
 	}
+
 }

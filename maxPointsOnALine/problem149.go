@@ -15,6 +15,10 @@ func (r Line) isCollinear(p Point) bool {
 	return r.A*p.x+r.B*p.y+r.C == 0
 }
 
+func getPoint(point []int) Point {
+	return Point{point[0], point[1]}
+}
+
 func getLine(p1 Point, p2 Point) Line {
 	A, B := p1.y-p2.y, -(p1.x - p2.x)
 	if A < 0 {
@@ -29,41 +33,48 @@ func MaxPoints(points [][]int) int {
 	if pointsLen < 3 {
 		return pointsLen
 	}
+	maxPointsOnLine, maxPointsOnPoint := 0, 0
 
-	maxLineLen := 0
-	maxPointsLen := 0
-	lines := make(map[Line]bool)
-	collinearPoints := make(map[Point]int)
+	coPoint := make(map[Point]int)
+	coLine := make(map[Line]bool)
+
 	for i := 0; i < pointsLen; i++ {
 		for j := i + 1; j < pointsLen; j++ {
-			p1 := Point{points[i][0], points[i][1]}
-			p2 := Point{points[j][0], points[j][1]}
-			if p1 != p2 {
+			p1 := getPoint(points[i])
+			p2 := getPoint(points[j])
+
+			if p1 == p2 {
+				coPoint[p1]++
+
+				if maxPointsOnPoint < coPoint[p1] {
+					maxPointsOnPoint = coPoint[p1]
+				}
+			} else {
 				line := getLine(p1, p2)
-				if !lines[line] {
+				if !coLine[line] {
+					coLine[line] = true
+
 					numPoints := 0
-					for _, point := range points {
-						if line.isCollinear(Point{point[0], point[1]}) {
+					for k := range points {
+						p3 := getPoint(points[k])
+						if line.isCollinear(p3) {
 							numPoints++
+						}
+						if numPoints+pointsLen-k <= maxPointsOnLine {
+							break
 						}
 					}
 
-					if numPoints > maxLineLen {
-						maxLineLen = numPoints
+					if numPoints > maxPointsOnLine {
+						maxPointsOnLine = numPoints
 					}
-				}
-			} else {
-				collinearPoints[p1]++
-				if maxPointsLen < collinearPoints[p1] {
-					maxPointsLen = collinearPoints[p1]
 				}
 			}
 		}
 	}
-
-	if maxPointsLen > maxLineLen {
-		return maxPointsLen
+	if maxPointsOnPoint > maxPointsOnLine {
+		return maxPointsOnPoint
 	}
 
-	return maxLineLen
+	return maxPointsOnLine
 }
